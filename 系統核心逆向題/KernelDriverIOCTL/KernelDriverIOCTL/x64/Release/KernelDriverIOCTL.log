@@ -1,0 +1,19 @@
+﻿  Building 'KernelDriverIOCTL' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Release\KernelDriverIOCTL.inf
+  Stamping [Version] section with DriverVer=12/02/2022,8.22.6.431
+  KernelDriverIOCTL.vcxproj -> D:\CodeLibrary\KernelDriverIOCTL\x64\Release\KernelDriverIOCTL.sys
+  Driver is 'Universal'.
+  .........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  D:\CodeLibrary\KernelDriverIOCTL\x64\Release\KernelDriverIOCTL\kerneldriverioctl.cat
+  Done Adding Additional Store
+  Successfully signed: D:\CodeLibrary\KernelDriverIOCTL\x64\Release\KernelDriverIOCTL\kerneldriverioctl.cat
+  

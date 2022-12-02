@@ -1,0 +1,20 @@
+﻿  Building 'KernelDriverIOCTL' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\KernelDriverIOCTL.inf
+  Stamping [Version] section with DriverVer=12/02/2022,7.44.15.904
+  Communication.cpp
+  main.cpp
+  Generating Code...
+  KernelDriverIOCTL.vcxproj -> D:\CodeLibrary\KernelDriverIOCTL\x64\Debug\KernelDriverIOCTL.sys
+  Done Adding Additional Store
+  Successfully signed: D:\CodeLibrary\KernelDriverIOCTL\x64\Debug\KernelDriverIOCTL.sys
+  
+  Driver is 'Universal'.
+  ........................
+  Signability test failed.
+  
+  Errors:
+  22.9.7: DriverVer set to a date in the future (postdated DriverVer not allowed) in KernelDriverIOCTL\kerneldriverioctl.inf.
+  
+  Warnings:
+  None
+x64\Debug\inf2catOutput.log : Inf2Cat error -2: "Inf2Cat, signability test failed." Double click to see the tool output.

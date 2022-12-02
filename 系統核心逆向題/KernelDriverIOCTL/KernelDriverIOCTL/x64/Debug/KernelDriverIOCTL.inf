@@ -1,0 +1,90 @@
+;
+; KernelDriverIOCTL.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=KernelDriverIOCTL.cat
+DriverVer = 12/02/2022,7.44.15.904
+PnpLockDown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+KernelDriverIOCTL_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+KernelDriverIOCTL.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%KernelDriverIOCTL.DeviceDesc%=KernelDriverIOCTL_Device, Root\KernelDriverIOCTL ; TODO: edit hw-id
+
+[KernelDriverIOCTL_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+KernelDriverIOCTL.sys
+
+;-------------- Service installation
+[KernelDriverIOCTL_Device.NT.Services]
+AddService = KernelDriverIOCTL,%SPSVCINST_ASSOCSERVICE%, KernelDriverIOCTL_Service_Inst
+
+; -------------- KernelDriverIOCTL driver install sections
+[KernelDriverIOCTL_Service_Inst]
+DisplayName    = %KernelDriverIOCTL.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\KernelDriverIOCTL.sys
+
+;
+;--- KernelDriverIOCTL_Device Coinstaller installation ------
+;
+
+[KernelDriverIOCTL_Device.NT.CoInstallers]
+AddReg=KernelDriverIOCTL_Device_CoInstaller_AddReg
+CopyFiles=KernelDriverIOCTL_Device_CoInstaller_CopyFiles
+
+[KernelDriverIOCTL_Device_CoInstaller_AddReg]
+;
+
+
+[KernelDriverIOCTL_Device_CoInstaller_CopyFiles]
+;
+
+
+[KernelDriverIOCTL_Device.NT.Wdf]
+KmdfService =  KernelDriverIOCTL, KernelDriverIOCTL_wdfsect
+[KernelDriverIOCTL_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "KernelDriverIOCTL Installation Disk"
+KernelDriverIOCTL.DeviceDesc = "KernelDriverIOCTL Device"
+KernelDriverIOCTL.SVCDESC = "KernelDriverIOCTL Service"
